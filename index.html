@@ -7,7 +7,7 @@
 <script>
   async function getLink() {
     const ytUrl = document.getElementById("ytlink").value;
-    const api = `https://yt-dlp-api-yourusername.vercel.app/api/video?url=${encodeURIComponent(ytUrl)}`;
+    const api = `https://yt-dlp-api-amber.vercel.app/api/video?url=${encodeURIComponent(ytUrl)}`;
     const res = await fetch(api);
     const data = await res.json();
     document.getElementById("output").value = data.direct || "Error";
