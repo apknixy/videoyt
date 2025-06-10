@@ -1,0 +1,15 @@
+<input type="text" id="ytlink" placeholder="Enter YouTube URL" />
+<button onclick="getLink()">Get Direct Link</button>
+
+<p>Direct Link:</p>
+<textarea id="output" rows="5" style="width:100%"></textarea>
+
+<script>
+  async function getLink() {
+    const ytUrl = document.getElementById("ytlink").value;
+    const api = `https://yt-dlp-api-yourusername.vercel.app/api/video?url=${encodeURIComponent(ytUrl)}`;
+    const res = await fetch(api);
+    const data = await res.json();
+    document.getElementById("output").value = data.direct || "Error";
+  }
+</script>
