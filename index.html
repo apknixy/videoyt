@@ -51,10 +51,10 @@
   </style>
 </head>
 <body>
-  <h1>YouTube Direct Video Viewer</h1>
+  <h1>YouTube Clean Video Viewer</h1>
   <input type="text" id="ytLink" placeholder="Paste YouTube video link here" />
   <br />
-  <button onclick="loadVideo()">Play Video</button>
+  <button onclick="loadVideo()">Play Clean Video</button>
 
   <div id="result"></div>
 
@@ -78,10 +78,10 @@
         return;
       }
 
-      const embedURL = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+      const embedURL = `https://www.youtube.com/embed/${videoId}?autoplay=1&controls=0&modestbranding=1&rel=0&showinfo=0&fs=0`;
 
       document.getElementById("result").innerHTML = `
-        <iframe src="${embedURL}" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <iframe src="${embedURL}" allow="autoplay" allowfullscreen></iframe>
         <div id="copyBox" onclick="copyLink(this)">🔗 ${embedURL}</div>
       `;
     }
