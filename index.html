@@ -1,15 +1,92 @@
-<input type="text" id="ytlink" placeholder="Enter YouTube URL" />
-<button onclick="getLink()">Get Direct Link</button>
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://player.unity3d.com/webgl/3.x/unity-webgl-loader.js"></script>
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-left">
+            <button id="menu-toggle" class="menu-button">☰</button>
+            <span class="app-title">My Social App</span>
+        </div>
+        <div class="header-right">
+            <div class="coin-display">
+                💰 <span id="coin-count">100</span>
+                <button id="earn-coins-button">Earn More</button>
+            </div>
+            <img src="https://via.placeholder.com/40" alt="Profile Logo" class="profile-logo" id="header-profile-logo" data-original-src="https://via.placeholder.com/40">
+        </div>
+    </header>
 
-<p>Direct Link:</p>
-<textarea id="output" rows="5" style="width:100%"></textarea>
+    <nav id="main-menu" class="main-menu">
+        <ul>
+            <li><a href="#" class="menu-item" data-section="home">Home</a></li>
+            <li><a href="#" class="menu-item" data-section="profile">My Profile</a></li>
+            <li><a href="#" class="menu-item" data-section="settings">Settings</a></li>
+            <li><a href="#" class="menu-item" data-section="monetization">Monetization</a></li>
+            <li><a href="#" class="menu-item" data-section="logout">Logout</a></li>
+        </ul>
+    </nav>
 
-<script>
-  async function getLink() {
-    const ytUrl = document.getElementById("ytlink").value;
-    const api = `https://yt-dlp-api-amber.vercel.app/api/video?url=${encodeURIComponent(ytUrl)}`;
-    const res = await fetch(api);
-    const data = await res.json();
-    document.getElementById("output").value = data.direct || "Error";
-  }
-</script>
+    <main class="app-content">
+        <section id="home-section" class="content-section active">
+            <h2>Feed</h2>
+            <div id="posts-container" class="posts-container">
+                <div class="post" data-post-id="post001">
+                    <div class="post-header">
+                        <img class="user-avatar" src="https://via.placeholder.com/50/FF0000/FFFFFF?text=A" alt="User Avatar">
+                        <span class="username" data-user-id="userA">AlphaUser</span>
+                    </div>
+                    <div class="post-content">
+                        <p class="post-text" data-original-text="This is an example post from AlphaUser. Lorem ipsum dolor sit amet, consectetur adipiscing elit.">This is an example post from AlphaUser. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <img class="post-image" src="https://via.placeholder.com/300x200?text=Post+Image+1" alt="Post Image">
+                    </div>
+                    <div class="post-actions">
+                        <button class="like-button">Like</button>
+                        <span class="like-count">15</span>
+                        <div class="reaction-emojis-container" style="display: none;"></div>
+                        <button class="translate-button">Translate</button>
+                    </div>
+                </div>
+            </div>
+            <div id="loading-spinner" class="loading-spinner" style="display: none;">Loading more posts...</div>
+        </section>
+
+        <section id="profile-section" class="content-section">
+            <h2>My Profile</h2>
+            <div class="profile-details">
+                <img src="https://via.placeholder.com/100" alt="Profile Logo" class="profile-logo large" id="profile-page-logo" data-original-src="https://via.placeholder.com/100">
+                <input type="file" id="profile-file-input" accept="image/*" style="display: none;">
+                <button id="change-profile-button">Change Profile Picture</button>
+                <p><strong>Username:</strong> <span id="profile-username">Current Username</span></p>
+                <p><strong>Bio:</strong> <span id="profile-bio">This is my amazing bio.</span></p>
+                </div>
+        </section>
+
+        <section id="settings-section" class="content-section">
+            <h2>Settings</h2>
+            <p>App settings will go here.</p>
+            </section>
+
+        <section id="monetization-section" class="content-section">
+            <h2>Monetization Dashboard</h2>
+            <p>Welcome to your monetization hub!</p>
+            <p>Here you can track your earnings and manage your content monetization.</p>
+            <ul>
+                <li><strong>Current Earnings:</strong> $0.00</li>
+                <li><strong>Followers for Eligibility:</strong> 100/1000</li>
+                <li><strong>Payout Method:</strong> Not set</li>
+            </ul>
+            <p>More features like ad revenue sharing, premium content, and detailed analytics will be available here.</p>
+            <button>Setup Payouts</button>
+            <button>View Analytics</button>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
